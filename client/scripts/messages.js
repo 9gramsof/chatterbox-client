@@ -5,9 +5,21 @@
 var Messages = {
 
   // TODO: Define how you want to store your messages.
-  _data: null,
+  _data: [],
 
   // TODO: Define methods which allow you to retrieve from,
   // add to, and generally interact with the messages.
 
+  retrieve: function(data) {
+    data.forEach(item => {
+      var msgobj = {};
+
+      msgobj['username'] = item.username;
+      msgobj['roomname'] = item.roomname;
+      msgobj['text'] = item.text;
+      Messages._data.push(msgobj);
+    });
+  }
+
+  // interact:
 };

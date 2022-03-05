@@ -18,6 +18,9 @@ var App = {
     // Fetch initial batch of messages
     App.startSpinner();
     App.fetch(App.stopSpinner);
+    //call App.stopSpinner
+    App.stopSpinner();
+
 
     // TODO: Make sure the app loads data from the API
     // continually, instead of just once at the start.
@@ -28,6 +31,56 @@ var App = {
       // examine the response from the server request:
       console.log(data);
 
+      // iterate over data
+      // var roomobj = [{
+      //   roomname: 'pizza party',
+      //   messages: [{username: 'Minggui', text: 'Hello World'}, {username: 'Julian', text: 'not Julian'}]
+      // },
+      // {
+      //   roomname: 'lobby',
+      //   messages:
+      // }];
+
+      //data.forEach(item => {
+      //var msgobj = {};
+      // var roomobj = {};
+
+      // msgobj['username'] = item.username;
+      // msgobj['roomname'] = item.roomname;
+      // msgobj['text'] = item.text;
+
+      Messages.retrieve(data);
+      Rooms.retrieve(data);
+      //if roomname is in roomobj
+      //push messages into roomobj[messages]
+      //else
+      //add roomname to roomobj with messages property
+      // if item.roomname is null, rename it
+      // if (item.roomname === null) {
+      //   roomobj['roomname'] = 'no room';
+      // } else {
+      //   roomobj['roomname'] = item.roomname;
+      // }
+      // roomobj['message'] = msgobj;
+      // if room does not exist, make an empty array
+      // if it does, we can push it that array
+      // if (Rooms._data[item.roomname] === undefined) {
+      //   Rooms._data[item.roomname] = [];
+      // } else {
+      //   Rooms._data[item.roomname].push(msgobj);
+      // }
+      //Rooms._data[item.roomname] = item.roomname;
+
+
+      // });
+
+
+
+
+      //Messages._data = data;
+      //render them through messagesview
+      MessagesView.render();
+      RoomsView.render();
       // TODO: Use the data to update Messages and Rooms
       // and re-render the corresponding views.
     });
@@ -42,4 +95,5 @@ var App = {
     App.$spinner.fadeOut('fast');
     FormView.setStatus(false);
   }
+
 };
